@@ -48,6 +48,9 @@ async function createPayPalPayment(amount) {
     const approvalURL = paymentResponse.data.links.find(link => link.rel === 'approval_url').href;
     window.location.href = approvalURL; // Redirect the user to the PayPal approval URL
 
+    // Update the payment amount on the checkout page
+    document.getElementById('payment-amount').textContent = amount;
+
     // Return the payment ID
     return paymentID;
   } catch (error) {
@@ -64,7 +67,8 @@ createPayPalPayment(amount)
     // Handle the payment ID as needed in your application
 
     // Display success message and close the page
-    document.write('Payment Successful');
+    document.getElementById('payment-details').style.display = 'none';
+    document.getElementById('success-message').style.display = 'block';
     window.close();
   })
   .catch(error => {
@@ -72,5 +76,6 @@ createPayPalPayment(amount)
     // Handle the error as needed in your application
 
     // Display error message
-    document.write('Payment Error');
+    document.getElementById('payment-details').style.display = 'none';
+    document.getElementById('error-message').style.display = 'block';
   });
