@@ -4,8 +4,8 @@ const amountText = totalPaymentElement.querySelector('strong').textContent;
 const amount = parseFloat(amountText.replace(/[^0-9.-]+/g, ''));
 
 // PayPal Sandbox API credentials
-const clientID = 'YOUR_SANDBOX_CLIENT_ID';
-const secret = 'YOUR_SANDBOX_SECRET';
+const clientID = 'AVPfUYPoLG_CYJrqUrX-mcrJo98HlYBBvkU2XLastyOcj4U99kZ1MFZ9Z2VginOPMG8nUkJOoGoZrDGL';
+const secret = 'EPJnhR38HxPrTB4Hr8gvb9kNYMd7UcD7mEWAGuEzdhlp17CkxmLWp4_TYprfQIClyjcgG12D_pwXzXdj';
 
 // Function to create a PayPal payment
 async function createPayPalPayment(amount) {
