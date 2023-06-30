@@ -2,35 +2,12 @@
 const clientID = 'AVPfUYPoLG_CYJrqUrX-mcrJo98HlYBBvkU2XLastyOcj4U99kZ1MFZ9Z2VginOPMG8nUkJOoGoZrDGL';
 const secret = 'EPJnhR38HxPrTB4Hr8gvb9kNYMd7UcD7mEWAGuEzdhlp17CkxmLWp4_TYprfQIClyjcgG12D_pwXzXdj';
 
-// Function to obtain the access token from PayPal
-async function getAccessToken() {
-  try {
-    const response = await axios.post('https://api-m.sandbox.paypal.com/v1/oauth2/token', null, {
-      auth: {
-        username: clientID,
-        password: secret,
-      },
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params: {
-        grant_type: 'client_credentials',
-      },
-    });
-
-    return response.data.access_token;
-  } catch (error) {
-    console.error('Error retrieving access token:', error.response.data);
-    throw error;
-  }
-}
+// Access token
+const accessToken = 'access_token$sandbox$2d94x3nrx9bvk9mh$ab0b879a46548c9f26f2520adc5d7578';
 
 // Function to create a PayPal payment
 async function createPayPalPayment(amount) {
   try {
-    // Obtain the access token
-    const accessToken = await getAccessToken();
-
     // Create a payment request
     const paymentResponse = await axios.post(
       'https://api-m.sandbox.paypal.com/v1/payments/payment',
@@ -98,13 +75,3 @@ createPayPalPayment(amount)
     document.getElementById('payment-details').style.display = 'none';
     document.getElementById('error-message').style.display = 'block';
   });
-
-// Clear form data when the form is submitted
-document.querySelector('form').addEventListener('submit', () => {
-  document.getElementById('name').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('address').value = '';
-  document.getElementById('card').value = '';
-  document.getElementById('expiry').value = '';
-  document.getElementById('cvv').value = '';
-});
