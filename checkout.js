@@ -98,3 +98,13 @@ createPayPalPayment(amount)
     document.getElementById('payment-details').style.display = 'none';
     document.getElementById('error-message').style.display = 'block';
   });
+
+// Clear form data when the form is submitted
+document.querySelector('form').addEventListener('submit', () => {
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('address').value = '';
+  document.getElementById('card').value = '';
+  document.getElementById('expiry').value = '';
+  document.getElementById('cvv').value = '';
+});
