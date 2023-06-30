@@ -7,7 +7,7 @@
 <body>
   <div class="container">
     <h1>Checkout</h1>
-    <form>
+    <form id="checkout-form">
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required>
       
@@ -28,7 +28,24 @@
       
       <button type="submit">Place Order</button>
     </form>
+
+    <div id="payment-details" style="display: none;">
+      <h2>Payment Details</h2>
+      <p>Payment Amount: <span id="payment-amount"></span></p>
+      <p id="payment-status"></p>
+    </div>
+
+    <div id="success-message" style="display: none;">
+      <h2>Payment Successful</h2>
+      <p>Thank you for your payment!</p>
+    </div>
+
+    <div id="error-message" style="display: none;">
+      <h2>Payment Error</h2>
+      <p>There was an error processing your payment. Please try again later.</p>
+    </div>
   </div>
+
+  <script src="checkout.js"></script>
 </body>
 </html>
-
