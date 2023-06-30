@@ -1,4 +1,7 @@
-const axios = require('axios');
+// Retrieve the total payment value from the HTML element
+const totalPaymentElement = document.querySelector('div._5uqybw2');
+const amountText = totalPaymentElement.querySelector('strong').textContent;
+const amount = parseFloat(amountText.replace(/[^0-9.-]+/g, ''));
 
 // PayPal Sandbox API credentials
 const clientID = 'YOUR_SANDBOX_CLIENT_ID';
@@ -60,7 +63,6 @@ async function createPayPalPayment(amount) {
 }
 
 // Example usage: Create a PayPal payment with a dynamic amount
-const amount = 10.99; // Replace with your dynamic price calculation
 createPayPalPayment(amount)
   .then(paymentID => {
     console.log('PayPal payment created with ID:', paymentID);
